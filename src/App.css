@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 
+    "gallary image sidebar"
+    "gallary slider sidebar";
+    height: 100vh;
+    width: 100vw;
+    background-color: #DADADA;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-image {
+  grid-area: image;
+  /* background-image: url(./assets/fifa.jpg); */
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.gallary {
+  grid-area: gallary;
+  background-color: hsl(266, 66%, 74%);
+  border-right: 1px solid hsl(266, 66%, 50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100px;
+  background-repeat: no-repeat;
+  padding: 2px;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar {
+  grid-area: sidebar;
+  background-color: hsl(182, 72%, 74%);
+  border-left: 1px solid hsl(182, 72%, 40%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar-item {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: hsl(182, 72%, 74%);
+  padding: 1rem;
+  position: relative;
+  transition: background-colour 150ms;
+}
+
+.sidebar-item:hover, .sidebar-item:focus {
+  background-color: hsl(182, 72%, 64%);
+}
+
+.sidebar-item.active {
+  background-color: hsl(182, 72%, 50%);
+}
+
+.sidebar-item::after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  bottom: 0;
+  height: 1px;
+  background-color: hsl(182, 72%, 40%);
+}
+
+.slider-container {
+  grid-area: slider;
+  background-color: #DADADA;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.slider {
+  width: 100%;
+  cursor: pointer;
+}
+
+.savebutton {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin: 3px;
+  border-radius: 20px;
+  background-color: hsl(313, 64%, 76%);
+  padding: 1rem;
+}
+
+.savebutton:hover {
+  scale: 1.03;
+  background-color: hsl(313, 64%, 71%);
 }
